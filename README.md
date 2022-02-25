@@ -173,7 +173,7 @@ See the [open issues](https://github.com/estebanvz/crypto_price/issues) for a fu
 <!-- LICENSE -->
 ## License
 
-Distributed under the GNU v3 License. See `LICENSE` for more information.
+Distributed under the MIT License. See `LICENSE` for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
