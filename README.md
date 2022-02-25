@@ -99,7 +99,7 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io
 sudo snap install code --classic
 ```
 * Install the visual studio code extension "Remote - Containers" -->
-### Installation
+### Building
 
 Follow the next steps:
 
@@ -121,7 +121,15 @@ Follow the next steps:
     ```
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+### Intalling
+
+Just need to use pip with git command:
+```python
+pip install git+https://github.com/estebanvz/crypto_price.git
+```
+
 ### Usage
+
 Get the keys from API Binance:
 
 [GET BINANCE API KEYS](https://www.binance.com/en/support/faq/360002502072)

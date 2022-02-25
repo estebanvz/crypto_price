@@ -16,10 +16,15 @@ class CryptoDataExtractor:
     def __init__(self, save_path="./datasets", criptos=["BTCUSDT"]) -> None:
         self.save_path = save_path
         self.criptos = criptos
+        if(os.path.isdir(self.save_path) is False):
+            os.mkdir(self.save_path)
 
     def from_binance(
         self, api_key="", api_secret="", time_in_hours=24, time_interval="1h"
     ):
+        time_folder = "{}/{}".format(self.save_path, time_interval)   
+        if(os.path.isdir(time_folder) is False):
+            os.mkdir(time_folder)
         client = Client(api_key, api_secret)
         client.API_URL = BINANCE_API
 
@@ -29,7 +34,7 @@ class CryptoDataExtractor:
             bars = client.get_historical_klines(cripto, time_interval, unixtime)
             if not len(bars) == 0:
                 np.savetxt(
-                    "{}/{}/{}.csv".format(self.save_path, time_interval, cripto),
+                    "{}/{}.csv".format(time_folder, cripto),
                     bars,
                     delimiter="|",
                     fmt="%s",
