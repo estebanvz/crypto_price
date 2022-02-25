@@ -1,0 +1,6 @@
+.env
+dist/crypto_price-0.0.1-py3.7.egg
+dist/crypto_price-0.0.1.tar.gz
+datasets/1h/BTCUSDT.csv
+build/lib/crypto_price/__init__.py
+*.egg*
