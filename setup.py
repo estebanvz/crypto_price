@@ -24,7 +24,7 @@ setuptools.setup(
     packages=setuptools.find_packages(where="src"),
     python_requires=">=3.7.9",
     install_requires=[
-       "python-binance==1.0.15",
-       "numpy==1.20.0",
+       "python-binance>=1.0.15",
+       "numpy>=1.21.5",
    ],
 )
