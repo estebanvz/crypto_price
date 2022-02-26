@@ -25,6 +25,6 @@ setuptools.setup(
     python_requires=">=3.7.9",
     install_requires=[
        "python-binance==1.0.15",
-       "numpy==1.21.5",
+       "numpy==1.20.0",
    ],
 )
