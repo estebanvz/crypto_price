@@ -32,10 +32,15 @@ class CryptoDataExtractor:
         unixtime = timestamp.strftime("%Y-%m-%d %H:%M:%S")
         for cripto in self.criptos:
             bars = client.get_historical_klines(cripto, time_interval, unixtime)
-            if not len(bars) == 0:
+            if len(bars) >= 60:
                 np.savetxt(
                     "{}/{}.csv".format(time_folder, cripto),
                     bars,
                     delimiter="|",
                     fmt="%s",
                 )
+    def get_cryptos():
+        client = Client("", "")
+        exchange_info = client.get_exchange_info()
+        cryptos = [e["symbol"] for e in exchange_info["symbols"] if e["symbol"].endswith('USDT') and 'MARGIN' in e["permissions"]]
+        return cryptos
