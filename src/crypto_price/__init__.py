@@ -31,8 +31,9 @@ def save_numpy_array_to_gcs(bucket_name, file_name, numpy_array):
     print(f"NumPy array saved to {bucket_name}/{file_name} in Google Cloud Storage")
 
 class CryptoDataExtractor:
-    def __init__(self, save_path, criptos=["BTCUSDT"], gcp = True) -> None:
+    def __init__(self, save_path, criptos=["BTCUSDT"], gcp = True, bucket="") -> None:
         self.save_path = save_path
+        self.bucket = bucket
         self.gcp = gcp
         self.criptos = criptos
         if(self.gcp is False):
@@ -56,7 +57,7 @@ class CryptoDataExtractor:
             bars = client.get_historical_klines(cripto, time_interval, unixtime)
             if len(bars) >= 60:
                 if(self.gcp):
-                    save_numpy_array_to_gcs(self.save_path,f"{bucketTime}-{cripto}",bars)
+                    save_numpy_array_to_gcs(self.bucket,f"{self.save_path}/{bucketTime}-{cripto}",bars)
                 else:
                     np.savetxt(
                     "{}/{}.csv".format(time_folder, cripto),
