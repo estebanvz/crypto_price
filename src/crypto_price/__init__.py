@@ -50,12 +50,13 @@ class CryptoDataExtractor:
         client.API_URL = BINANCE_API
 
         timestamp = datetime.utcnow() - timedelta(hours=time_in_hours)
-        unixtime = timestamp.strftime("%Y%m%d%H%M%S")
+        unixtime = timestamp.strftime("%Y-%m-%d %H:%M:%S")
+        bucketTime = timestamp.strftime("%Y%m%d%H%M%S")
         for cripto in self.criptos:
             bars = client.get_historical_klines(cripto, time_interval, unixtime)
             if len(bars) >= 60:
                 if(self.gcp):
-                    save_numpy_array_to_gcs(self.save_path,f"{time_folder}-{cripto}",bars)
+                    save_numpy_array_to_gcs(self.save_path,f"{bucketTime}-{cripto}",bars)
                 else:
                     np.savetxt(
                     "{}/{}.csv".format(time_folder, cripto),
